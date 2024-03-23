@@ -2,7 +2,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model WeatherInfo
+<form method="post">
+    <div class="form-group">
+        <label>Input Data:</label>
+        <input name="city" class="form-control" />
+      
+
+    </div>
+    <button type="submit" class="btn btn-primary">Display</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.City))
+{
+    <h2>Weather Information for @Model.Name</h2>
+
+    <p>Temperature: @Model.Main.Temp °C</p>
+    <p>Description: @Model.Weather[0].Description</p>
+    <p>Humidity: @Model.Main.Humidity %</p>
+    <p>Wind Speed: @Model.Wind.Speed m/s</p>
+   
+    <!-- Add more properties as needed -->
+}
